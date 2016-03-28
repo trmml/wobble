@@ -22,11 +22,16 @@ def index():
         title = 'Recent Earthquake'
 
     favicon = url_for('static', filename=colour + '_favicon.ico') # dynamic favicons!
+
     return render_template('index.html', message=sentence, colour=colour, favicon=favicon, title=title)
 
 @app.route('/api/earthquakes')
 def earthquakes():
-    return jsonify(response=sentence, url=earthquake.get()['url'], success=True)
+    data = { 'response': sentence, 'success': True }
+    if earthquake.get()['is_quake']:
+        data['url'] = earthquake.get()['url']
+
+    return jsonify(data)
 
 @app.errorhandler(404)
 def page_not_found(e):
