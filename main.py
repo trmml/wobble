@@ -5,21 +5,28 @@ import requests
 
 app = Flask(__name__)
 CORS(app)
+
 earthquake = Request()
+sentence = earthquake.get()['sentence']
 
 @app.route('/')
 def index():
-    skel = url_for('static', filename='bower_components/skeleton/css/skeleton.css')
-    normalize = url_for('static', filename='bower_components/skeleton/css/normalize.css')
-    css = url_for('static', filename='css/style.css')
-    print
-    print earthquake.get()
-    print
-    return render_template('index.html', normalize=normalize, skel=skel, css=css, earthquake=earthquake.get())
+    if earthquake.get()['is_quake']:
+        colour = 'red'
+    else:
+        colour = 'blue'
+
+    if colour == 'blue':
+        title = sentence
+    else:
+        title = 'Recent Earthquake'
+
+    favicon = url_for('static', filename=colour + '_favicon.ico') # dynamic favicons!
+    return render_template('index.html', message=sentence, colour=colour, favicon=favicon, title=title)
 
 @app.route('/api/earthquakes')
 def earthquakes():
-	return jsonify(response=earthquake.get())
+    return jsonify(response=sentence, url=earthquake.get()['url'], success=True)
 
 @app.errorhandler(404)
 def page_not_found(e):

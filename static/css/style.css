@@ -1,3 +1,11 @@
-.container {
-  margin-top: 50px;
+.container { margin-top: 50px; margin-bottom: 50px; }
+.container h3.red { background: #FF4136; }
+.container h3.blue { background: #0074D9; }
+.container a.red, .container #heart.red { color: #FF4136; }
+.container a.blue, .container #heart.blue { color: #0074D9; }
+.container #message {
+  color: #FFFFFF;
+  padding: 20px;
+  border-radius: 15px;
+  letter-spacing: 2px;
 }

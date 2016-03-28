@@ -3,11 +3,21 @@
   <head>
     <title>Wobble • {% block title %}{% endblock %}</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ normalize }}">
-    <link rel="stylesheet" href="{{ skel }}">
-    <link rel="stylesheet" href="{{ css }}">
+    <link rel="shortcut icon" href="{{ favicon }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/skeleton/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/skeleton/css/skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   </head>
   <body>
-    {% block body %}{% endblock %}
+    <div class="container">
+      {% block body %}{% endblock %}
+      <div class="row">
+        <hr>
+        <div class="twelve columns">
+          Made <a class="{{colour}}" href="https://github.com/trmml/wobble">open-source</a>
+          with <span id="heart" class="{{colour}}">&hearts;</span> by <a class="{{colour}}" href="http://joshtrommel.com">Josh Trommel</a>.
+        </div>
+      </div>
+    </div>
   </body>
 </html>

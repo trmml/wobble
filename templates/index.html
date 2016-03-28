@@ -1,30 +1,43 @@
 {% extends "layout.html" %}
-{% block title %}The Earthquake Service{% endblock %}
+{% block title %}{{title}}{% endblock %}
 
 {% block body %}
-  <div class="container">
-    <div class="row">
-      <div class="twelve columns">
-        <h3>{{ earthquake }}</h3>
-        <p>About 6 months ago, <a href="https://twitter.com/WAGGNews">@WAGGNews</a>
-          asked me to make a Twitter bot for them that tweets earthquakes, and information
-          regarding them. <a href="https://github.com/WAGGNews/WAGG-Earthquake-Bot">I did</a>,
-          sort of. Although the functionality was there, I never finished connecting it to Twitter
-          or pushing it to a server.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="twelve columns">
-        <p>I want to finish that project, though, because I enjoyed working on it, and I'd like
-        to help out WAGG as much as possible. But I'd also like to create a service around this functionality, because I think it'd serve as a helpful tool to anyone who wishes to monitor recent earthquakes, for whatever reason that may be.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="twelve columns">
-        <p>So, without further adieu, here's Wobble.</p>
-      </div>
+  <div class="row">
+    <div class="twelve columns">
+      <h3 id="message" class="{{colour}}">{{ message }}</h3>
     </div>
   </div>
+  <div class="row">
+    <div class="twelve columns">
+      <h3>Wobble</h3>
+      <p>Wobble is a real-time native earthquake event manager that provides nearly instant significant
+        earthquake updates and information regarding them. It comes neatly wrapped with a nice API, to boot.</p>
+      <p>About 6 months ago, <a class="{{colour}}" href="https://twitter.com/WAGGNews">@WAGGNews</a>
+        asked me to make a Twitter bot for them that tweets real-time earthquake events and the information
+        regarding them. <a class="{{colour}}" href="https://github.com/WAGGNews/WAGG-Earthquake-Bot">I did</a>,
+        sort of. Although the functionality was there, I never finished connecting it to Twitter
+        or pushing it to a server.</p>
+      <p>I want to finish that project, though, because I enjoyed working on it, and I'd like
+      to help out WAGG as much as possible. But I'd also like to create a service around this functionality,
+      because I think it'd serve as a helpful tool to anyone who wishes to monitor recent earthquakes,
+      for whatever reason that may be.</p>
+      <p>I'll include a link here when I finish with the Twitter bot (hopefully within this week.)</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="twelve columns">
+      <h3>API Endpoint</h3>
+      <h4><code>GET <a class="{{colour}}" href="api/earthquakes">/api/earthquakes</a></code></h4>
+      <p>Provides a sentence of the most recent significant earthquake.
+        This includes location, magnitude, time. Also provides the appropriate
+        <a class="{{colour}}" href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">usgs.gov</a> event URL.</p>
+      <pre><code>{
+  "response": "Magnitude 6.4 earthquake hits 211 kilometres South of Ust'-Kamchatsk Staryy, Russia at 15:50 UTC",
+  "success": true,
+  "url": "http://earthquake.usgs.gov/earthquakes/eventpage/us20005bbh"
+}</code></pre>
+    </div>
+  </div>
+
 {% endblock %}

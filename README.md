@@ -2,6 +2,8 @@ Wobble
 ======
 
 As pleasant of an earthquake service as you'll find.
+Using [usgs.gov](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
+for nearly instant earthquake updates.
 
 Development
 -----------

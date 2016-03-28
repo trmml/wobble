@@ -7,12 +7,12 @@ class Request():
 		self.url = { 'main': self.api_url % 'hour', 'test': self.api_url % 'month' }
 
 	def get(self):
-		r = requests.get(self.url['main'])
+		r = requests.get(self.url['main']) # main/test for dev purposes
 		if r.status_code == 200:
 			if len(r.json()['features']) > 0:
 				earthquake = English(r.json())
-				return earthquake.sentence()
+				return {'sentence': earthquake.sentence(), 'url': earthquake.url(), 'is_quake': True }
 			else:
-				return "No Recent Earthquakes"
+				return { 'sentence': 'No Recent Significant Earthquakes', 'is_quake': False}
 		else:
 			return "Error: Status code {}".format(r.status_code)

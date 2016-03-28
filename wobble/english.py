@@ -38,9 +38,6 @@ class English():
         return value.strftime("%H:%M")
 
     def sentence(self):
-        values = {
-            "magnitude":self.magnitude(), "place":self.place(),
-            "time":self.time(), "url":self.url()}
-        string = "Magnitude {magnitude} earthquake hits {place} at {time} UTC " \
-        "– @USGS {url}".format(**values)
-        return string.replace('–', '-')
+        values = { "magnitude":self.magnitude(), "place":self.place(), "time":self.time() }
+        sentence = "Magnitude {magnitude} earthquake hits {place} at {time} UTC".format(**values)
+        return sentence.replace('–', '-')
