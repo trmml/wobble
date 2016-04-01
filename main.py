@@ -25,7 +25,7 @@ def index():
 
     return render_template('index.html', message=sentence, colour=colour, favicon=favicon, title=title)
 
-@app.route('/api/earthquakes')
+@app.route('/api/recent')
 def earthquakes():
     data = { 'response': sentence, 'success': True }
     if earthquake.get()['is_quake']:
