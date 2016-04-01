@@ -13,13 +13,10 @@ sentence = earthquake.get()['sentence']
 def index():
     if earthquake.get()['is_quake']:
         colour = 'red'
+        title = 'Recent Earthquake'
     else:
         colour = 'blue'
-
-    if colour == 'blue':
         title = sentence
-    else:
-        title = 'Recent Earthquake'
 
     favicon = url_for('static', filename=colour + '_favicon.ico') # dynamic favicons!
 
