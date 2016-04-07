@@ -39,5 +39,5 @@ class English():
 
     def sentence(self):
         values = { "magnitude":self.magnitude(), "place":self.place(), "time":self.time() }
-        sentence = "Magnitude {magnitude} earthquake hits {place} at {time} UTC".format(**values)
+        sentence = "Magnitude {magnitude} earthquake hits {place} at {time} UTC.".format(**values)
         return sentence.replace('–', '-')
